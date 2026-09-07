@@ -18,9 +18,6 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Using Remove="System.Linq"/>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="book-attributes.xml"/>
     <EmbeddedResource Include="book-elements.xml"/>
     <EmbeddedResource Include="book-list-attributes.xml"/>
