@@ -13,17 +13,17 @@ public class BookTitleAttributeTests : XmlTestFixtureBase
     [SetUp]
     public void SetUp()
     {
-            this.content = ReadContent(SourceFileName);
-        }
+        this.content = ReadContent(SourceFileName);
+    }
 
     [Test]
     public void DeserializeAndTestContent()
     {
-            Book book = Deserialize<Book>(this.content);
+        Book book = Deserialize<Book>(this.content);
 
-            Assert.That(book, Is.Not.Null);
-            Assert.That(book.Title, Is.EqualTo("Pride And Prejudice"));
-        }
+        Assert.That(book, Is.Not.Null);
+        Assert.That(book.Title, Is.EqualTo("Pride And Prejudice"));
+    }
 
     [XmlRoot("book", Namespace = "")]
     public class Book

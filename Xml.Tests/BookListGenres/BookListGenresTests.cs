@@ -16,58 +16,58 @@ public class BookListGenresTests : XmlTestFixtureBase
     [SetUp]
     public void SetUp()
     {
-            this.content = ReadContent(SourceFileName);
-            this.schema = ReadSchema(SchemaFileName);
-        }
+        this.content = ReadContent(SourceFileName);
+        this.schema = ReadSchema(SchemaFileName);
+    }
 
     [Test]
     public void DeserializeAndTestContent()
     {
-            BookList bookList = Deserialize<BookList>(this.content);
+        BookList bookList = Deserialize<BookList>(this.content);
 
-            Assert.That(bookList, Is.Not.Null);
-            Assert.That(bookList.Books, Is.Not.Null);
-            Assert.That(bookList.Books.Count, Is.EqualTo(3));
+        Assert.That(bookList, Is.Not.Null);
+        Assert.That(bookList.Books, Is.Not.Null);
+        Assert.That(bookList.Books.Count, Is.EqualTo(3));
 
-            var book = bookList.Books[0];
-            Assert.That(book.Title, Is.EqualTo("Pride And Prejudice"));
-            Assert.That(book.Price, Is.EqualTo(24.95));
-            Assert.That(book.Genres.Count, Is.EqualTo(2));
-            Assert.That(book.Genres[0], Is.EqualTo("Classic Regency novel"));
-            Assert.That(book.Genres[1], Is.EqualTo("Romance novel"));
-            Assert.That(book.Isbn, Is.EqualTo("1-861001-57-8"));
-            Assert.That(book.PublicationDate, Is.EqualTo("1823-01-28"));
+        var book = bookList.Books[0];
+        Assert.That(book.Title, Is.EqualTo("Pride And Prejudice"));
+        Assert.That(book.Price, Is.EqualTo(24.95));
+        Assert.That(book.Genres.Count, Is.EqualTo(2));
+        Assert.That(book.Genres[0], Is.EqualTo("Classic Regency novel"));
+        Assert.That(book.Genres[1], Is.EqualTo("Romance novel"));
+        Assert.That(book.Isbn, Is.EqualTo("1-861001-57-8"));
+        Assert.That(book.PublicationDate, Is.EqualTo("1823-01-28"));
 
-            book = bookList.Books[1];
-            Assert.That(book.Title, Is.EqualTo("The Handmaid's Tale"));
-            Assert.That(book.Price, Is.EqualTo(29.95));
-            Assert.That(book.Genres.Count, Is.EqualTo(3));
-            Assert.That(book.Genres[0], Is.EqualTo("Dystopian novel"));
-            Assert.That(book.Genres[1], Is.EqualTo("Speculative fiction"));
-            Assert.That(book.Genres[2], Is.EqualTo("Tragedy"));
-            Assert.That(book.Isbn, Is.EqualTo("1-861002-30-1"));
-            Assert.That(book.PublicationDate, Is.EqualTo("1985-01-01"));
+        book = bookList.Books[1];
+        Assert.That(book.Title, Is.EqualTo("The Handmaid's Tale"));
+        Assert.That(book.Price, Is.EqualTo(29.95));
+        Assert.That(book.Genres.Count, Is.EqualTo(3));
+        Assert.That(book.Genres[0], Is.EqualTo("Dystopian novel"));
+        Assert.That(book.Genres[1], Is.EqualTo("Speculative fiction"));
+        Assert.That(book.Genres[2], Is.EqualTo("Tragedy"));
+        Assert.That(book.Isbn, Is.EqualTo("1-861002-30-1"));
+        Assert.That(book.PublicationDate, Is.EqualTo("1985-01-01"));
 
-            book = bookList.Books[2];
-            Assert.That(book.Title, Is.EqualTo("Sense and Sensibility"));
-            Assert.That(book.Price, Is.EqualTo(19.95));
-            Assert.That(book.Genres.Count, Is.EqualTo(1));
-            Assert.That(book.Genres[0], Is.EqualTo("Romance novel"));
-            Assert.That(book.Isbn, Is.EqualTo("1-861001-45-3"));
-            Assert.That(book.PublicationDate, Is.EqualTo("1811-01-01"));
-        }
+        book = bookList.Books[2];
+        Assert.That(book.Title, Is.EqualTo("Sense and Sensibility"));
+        Assert.That(book.Price, Is.EqualTo(19.95));
+        Assert.That(book.Genres.Count, Is.EqualTo(1));
+        Assert.That(book.Genres[0], Is.EqualTo("Romance novel"));
+        Assert.That(book.Isbn, Is.EqualTo("1-861001-45-3"));
+        Assert.That(book.PublicationDate, Is.EqualTo("1811-01-01"));
+    }
 
     [Test]
     public void ValidateSchema()
     {
-            ValidateSchema(this.content, this.schema, TargetNamespaces.BooksNamespace);
-        }
+        ValidateSchema(this.content, this.schema, TargetNamespaces.BooksNamespace);
+    }
 
     [Test]
     public void LoadXmlAndTestElementPrefixes()
     {
         LoadXmlAndTestElementPrefixes(this.content, NamespacePrefix);
-        }
+    }
 
     [XmlRoot("books", Namespace = TargetNamespaces.BooksNamespace)]
     public class BookList

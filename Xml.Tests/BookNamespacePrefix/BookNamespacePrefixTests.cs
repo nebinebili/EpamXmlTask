@@ -16,31 +16,31 @@ public class BookNamespacePrefixTests : XmlTestFixtureBase
     [SetUp]
     public void SetUp()
     {
-            this.content = ReadContent(SourceFileName);
-            this.schema = ReadSchema(SchemaFileName);
-        }
+        this.content = ReadContent(SourceFileName);
+        this.schema = ReadSchema(SchemaFileName);
+    }
 
     [Test]
     public void DeserializeAndTestContent()
     {
-            Book book = Deserialize<Book>(this.content);
+        Book book = Deserialize<Book>(this.content);
 
-            Assert.That(book, Is.Not.Null);
-            Assert.That(book.Title, Is.EqualTo("Pride And Prejudice"));
-            Assert.That(book.Id, Is.EqualTo(1));
-        }
+        Assert.That(book, Is.Not.Null);
+        Assert.That(book.Title, Is.EqualTo("Pride And Prejudice"));
+        Assert.That(book.Id, Is.EqualTo(1));
+    }
 
     [Test]
     public void ValidateSchema()
     {
-            ValidateSchema(this.content, this.schema, TargetNamespaces.BookNamespace);
-        }
+        ValidateSchema(this.content, this.schema, TargetNamespaces.BookNamespace);
+    }
 
     [Test]
     public void LoadXmlAndTestElementPrefixes()
     {
         LoadXmlAndTestElementPrefixes(this.content, NamespacePrefix);
-        }
+    }
 
     [XmlRoot("book", Namespace = TargetNamespaces.BookNamespace)]
     public class Book
